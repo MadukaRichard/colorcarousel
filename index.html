@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Color Carousel</title>
+  <style>
+    h1{
+        text-align: center;
+    }
+    #colorDisplay {
+      width: 400px;
+      height: 400px;
+      margin: 20px auto;
+    }
+
+    button {
+      margin: 5px;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Color Carousel</h1>
+  <div id="colorDisplay"></div>
+  <button id="prevColor">Previous Color</button>
+  <button id="nextColor">Next Color</button>
+</body>
+<script>
+   
+const colors = ["red", "blue", "green", "yellow", "purple"]; 
+let colorIndex = 0; 
+
+const colorDisplay = document.getElementById("colorDisplay");
+const prevColorButton = document.getElementById("prevColor");
+const nextColorButton = document.getElementById("nextColor");
+
+
+function updateColor() {
+  colorDisplay.style.backgroundColor = colors[colorIndex];
+}
+
+prevColorButton.addEventListener("click", () => {
+  colorIndex = (colorIndex - 1 + colors.length) % colors.length;
+  updateColor();
+});
+
+nextColorButton.addEventListener("click", () => {
+  colorIndex = (colorIndex + 1) % colors.length;
+  updateColor();
+});
+
+updateColor();
+
+</script>
+</html>
